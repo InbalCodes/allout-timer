@@ -1,0 +1,31 @@
+{
+  "name": "allout-timer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Interval timer that cues over the music you already play. Store name: Allout Timer.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "check": "tsc --noEmit && node scripts/check-workout.mjs",
+    "cap:sync": "npm run build && npx cap sync android",
+    "cap:device": "tsc --noEmit && vite build --mode device && npx cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.5.2",
+    "@capacitor/app": "8.1.2",
+    "@capacitor/core": "8.5.2",
+    "@revenuecat/purchases-capacitor": "13.7.4",
+    "preact": "10.29.8",
+    "@netlify/blobs": "11.1.4"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.5.2",
+    "@preact/preset-vite": "2.10.6",
+    "typescript": "5.9.3",
+    "vite": "7.3.7"
+  },
+  "overrides": {
+    "rollup": "4.67.4"
+  }
+}

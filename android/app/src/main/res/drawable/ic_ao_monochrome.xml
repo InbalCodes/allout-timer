@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Allout Timer logo: a bold A with a stopwatch crown. Single colour for themed icons. 108dp adaptive-icon canvas; the mark sits inside the 66dp safe zone. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <group android:scaleX="0.56" android:scaleY="0.56" android:translateX="20.4" android:translateY="22.6">
+        <path android:fillColor="#FFFFFF" android:pathData="M55,14 H65 A3,3 0 0,1 68,17 V21 A3,3 0 0,1 65,24 H55 A3,3 0 0,1 52,21 V17 A3,3 0 0,1 55,14 Z"/>
+        <path android:fillColor="#FFFFFF" android:fillType="evenOdd" android:pathData="M60,28 L96,98 H78 L72,85 H48 L42,98 H24 Z M54,71 H66 L60,57 Z"/>
+    </group>
+</vector>

@@ -1,0 +1,19 @@
+# Public site = landing + legal pages (site/). The app itself runs only on the phone and needs no server.
+# The one function is the RevenueCat → Telegram sales alert (infra/SALES-ALERTS.md).
+[build]
+  command = "echo 'static site: nothing to build'"
+  publish = "site"
+  functions = "netlify/functions"
+  # Every production deploy costs Netlify credits (15 each; shared by all Uniqops sites).
+  # Skip the deploy when nothing Netlify serves has changed. Exit 0 = skip, 1 = deploy.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- site/ netlify/ netlify.toml package.json package-lock.json"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
