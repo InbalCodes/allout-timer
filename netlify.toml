@@ -8,6 +8,11 @@
   # Skip the deploy when nothing Netlify serves has changed. Exit 0 = skip, 1 = deploy.
   ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- site/ netlify/ netlify.toml package.json package-lock.json"
 
+# Netlify's secret scan flags the Firebase Android key (AIza...) in google-services.json. That key is public by design:
+# it ships inside every APK and is limited by Firebase rules, not secrecy. The site never serves the android/ folder.
+[build.environment]
+  SECRETS_SCAN_OMIT_PATHS = "android/app/google-services.json"
+
 [functions]
   node_bundler = "esbuild"
 

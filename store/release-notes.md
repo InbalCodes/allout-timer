@@ -2,6 +2,35 @@
 
 מדביקים ב-Play Console → Create new release → Release notes, בבת אחת (Play מזהה את השפות לפי התגיות). מגבלה: 500 תווים לשפה.
 
+## 0.1.3 (versionCode 4): דיווח קריסות
+
+```
+<en-US>
+Stability improvements and faster bug fixes.
+</en-US>
+<fr-FR>
+Amélioration de la stabilité et corrections de bugs plus rapides.
+</fr-FR>
+<de-DE>
+Verbesserte Stabilität und schnellere Fehlerbehebungen.
+</de-DE>
+<it-IT>
+Maggiore stabilità e correzioni di bug più rapide.
+</it-IT>
+<ja-JP>
+安定性を向上し、不具合をより早く修正できるようになりました。
+</ja-JP>
+<ko-KR>
+안정성을 개선하고 오류를 더 빠르게 수정할 수 있게 되었습니다.
+</ko-KR>
+<pt-BR>
+Mais estabilidade e correções de erros mais rápidas.
+</pt-BR>
+<es-419>
+Mayor estabilidad y correcciones de errores más rápidas.
+</es-419>
+```
+
 ## 0.1.0 (versionCode 1): גרסה ראשונה
 
 ```
