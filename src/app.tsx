@@ -13,6 +13,7 @@ import { loadCurrent, saveCurrent, loadLibrary, saveLibrary, libAdd, libUpdate, 
 import { isPro, onProChange, restore } from "./lib/purchases";
 import { Paywall, LEGAL } from "./components/Paywall";
 import { afterWorkoutCompleted } from "./lib/review";
+import { secretTap } from "./lib/crash";
 
 type Screen = "home" | "library" | "run" | "done" | "settings";
 const KINDS: Kind[] = ["work", "rest", "warmup", "cooldown"];
@@ -378,7 +379,7 @@ export function App() {
       {screen === "home" && (
         <section class="home">
           <header class="top">
-            <h1>{t("appName")}</h1>
+            <h1 onClick={secretTap}>{t("appName")}</h1>
             <button type="button" class="ghost gear" aria-label={t("settings")} onClick={() => setScreen("settings")}>⚙</button>
           </header>
           <p class="tagline">{t("tagline")}</p>
