@@ -1,6 +1,6 @@
 {
   "name": "allout-timer",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "type": "module",
   "description": "Interval timer that cues over the music you already play. Store name: Allout Timer.",

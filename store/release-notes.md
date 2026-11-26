@@ -2,32 +2,32 @@
 
 מדביקים ב-Play Console → Create new release → Release notes, בבת אחת (Play מזהה את השפות לפי התגיות). מגבלה: 500 תווים לשפה.
 
-## 0.1.3 (versionCode 4): דיווח קריסות
+## 0.1.4 (versionCode 5): מסך Pro חדש, בקשת דירוג, דיווח קריסות
 
 ```
 <en-US>
-Stability improvements and faster bug fixes.
+New Pro screen, clearer Pro marks in the editor, no more accidental zoom on double tap, and stability improvements.
 </en-US>
 <fr-FR>
-Amélioration de la stabilité et corrections de bugs plus rapides.
+Nouvel écran Pro, repères Pro plus clairs dans l'éditeur, plus de zoom accidentel au double appui, et une meilleure stabilité.
 </fr-FR>
 <de-DE>
-Verbesserte Stabilität und schnellere Fehlerbehebungen.
+Neuer Pro-Bildschirm, klarere Pro-Hinweise im Editor, kein versehentliches Zoomen beim Doppeltippen mehr und mehr Stabilität.
 </de-DE>
 <it-IT>
-Maggiore stabilità e correzioni di bug più rapide.
+Nuova schermata Pro, indicazioni Pro più chiare nell'editor, niente più zoom accidentale con il doppio tocco e maggiore stabilità.
 </it-IT>
 <ja-JP>
-安定性を向上し、不具合をより早く修正できるようになりました。
+Pro画面を新しくし、エディターのPro表示をわかりやすくしました。ダブルタップで誤って拡大されなくなり、安定性も向上しました。
 </ja-JP>
 <ko-KR>
-안정성을 개선하고 오류를 더 빠르게 수정할 수 있게 되었습니다.
+새로운 Pro 화면, 편집기의 더 명확한 Pro 표시, 두 번 탭할 때 실수로 확대되는 문제 해결, 안정성 개선.
 </ko-KR>
 <pt-BR>
-Mais estabilidade e correções de erros mais rápidas.
+Nova tela Pro, marcas Pro mais claras no editor, fim do zoom acidental no toque duplo e mais estabilidade.
 </pt-BR>
 <es-419>
-Mayor estabilidad y correcciones de errores más rápidas.
+Nueva pantalla Pro, marcas Pro más claras en el editor, sin zoom accidental al tocar dos veces y más estabilidad.
 </es-419>
 ```
 
