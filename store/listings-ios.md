@@ -1,6 +1,6 @@
 # Allout Timer: טקסטים ל-App Store
 
-נוצר על ידי `node scripts/ios-listings.mjs`. מעתיקים לכל שפה ב-App Store Connect. מילות המפתח הן ניחוש: עוד לא נעשה מחקר מילות מפתח.
+נוצר על ידי `node scripts/ios-listings.mjs`. מעתיקים לכל שפה ב-App Store Connect. מילות המפתח נבחרו לפי הבדיקה החינמית מ-26.11.2026 (`store/keywords-ios/README.md`), בלי מספרי פופולריות.
 
 ## English (U.S.) (en-US)
 **Name** (29/30)
@@ -18,10 +18,10 @@ Workout cues over your music
 ```
 Beeps and voice cues play over your music without pausing it. Build sets inside sets, by time or by reps. Pro is one purchase, never a subscription.
 ```
-**Keywords** (99/100)
+**Keywords** (100/100)
 
 ```
-tabata,gym,emom,amrap,rounds,boxing,running,rest,reps,sets,stopwatch,circuit,fitness,training,voice
+tabata,gym,rest,emom,amrap,round,boxing,circuit,running,exercise,training,rep,counter,sets,stopwatch
 ```
 **Description** (1551/4000)
 
@@ -64,17 +64,17 @@ Allout Timer: Intervalles HIIT
 **Subtitle** (25/30)
 
 ```
-Signaux sur votre musique
+Minuteur sport en musique
 ```
 **Promotional Text** (170/170)
 
 ```
 Bips et annonces vocales par-dessus votre musique, sans la couper. Créez des séries dans des séries, en durée ou en répétitions. Pro : un seul achat, jamais d'abonnement.
 ```
-**Keywords** (96/100)
+**Keywords** (97/100)
 
 ```
-tabata,entrainement,sport,emom,amrap,rounds,boxe,course,repos,series,chrono,circuit,fitness,voix
+fractionné,chrono,chronomètre,tabata,emom,boxe,course,entrainement,repos,séries,circuit,salle,gym
 ```
 **Description** (1790/4000)
 
@@ -124,10 +124,10 @@ Ansagen über deiner Musik
 ```
 Pieptöne und Ansagen laufen über deiner Musik, ohne sie zu stoppen. Baue Sätze in Sätzen, nach Zeit oder Wiederholungen. Pro ist ein Einmalkauf, nie ein Abo.
 ```
-**Keywords** (97/100)
+**Keywords** (94/100)
 
 ```
-tabata,workout,training,emom,amrap,runden,boxen,laufen,pause,sätze,stoppuhr,zirkel,fitness,stimme
+sport,stoppuhr,workout,training,tabata,emom,boxen,box,laufen,runden,pause,sätze,zirkel,fitness
 ```
 **Description** (1770/4000)
 
@@ -177,10 +177,10 @@ Segnali sopra la tua musica
 ```
 Bip e annunci vocali sopra la tua musica, senza fermarla. Crea serie dentro serie, a tempo o a ripetizioni. Pro è un acquisto unico, mai un abbonamento.
 ```
-**Keywords** (98/100)
+**Keywords** (99/100)
 
 ```
-tabata,allenamento,palestra,emom,amrap,round,boxe,corsa,recupero,serie,cronometro,circuito,fitness
+allenamento,palestra,cronometro,tabata,emom,boxe,ripetute,corsa,recupero,serie,circuito,round,sport
 ```
 **Description** (1705/4000)
 
@@ -230,10 +230,10 @@ Allout Timer: インターバル & HIIT
 ```
 音楽を止めずに、ビープ音と音声の合図を重ねて再生。時間でも回数でも、セットの中にセットを作れます。Proは買い切りで、サブスクではありません。
 ```
-**Keywords** (71/100)
+**Keywords** (95/100)
 
 ```
-タバタ,筋トレ,ワークアウト,トレーニング,ジム,EMOM,ラウンド,ボクシング,ランニング,休憩,セット,ストップウォッチ,サーキット,音声
+タバタ,タバタ式,筋トレ,トレーニング,ラウンド,インターバル走,ランニング,ジム,ボクシング,EMOM,ストップウォッチ,サーキット,休憩,セット,速歩,音声,ストレッチ,腹筋,ダイエット
 ```
 **Description** (833/4000)
 
@@ -283,10 +283,10 @@ Allout Timer: 인터벌 & HIIT
 ```
 음악을 멈추지 않고 비프음과 음성 안내를 얹어 재생합니다. 시간 또는 횟수로, 세트 안의 세트까지 만들 수 있습니다. Pro는 한 번 구매, 구독이 아닙니다.
 ```
-**Keywords** (51/100)
+**Keywords** (79/100)
 
 ```
-타바타,헬스,트레이닝,EMOM,라운드,복싱,러닝,휴식,세트,스톱워치,서킷,피트니스,홈트,음성
+타바타,헬스,홈트,러닝,라운드,복싱,스톱워치,트레이닝,EMOM,휴식,세트,서킷,피트니스,음성,달리기,근력,줄넘기,스트레칭,복근,다이어트,플랭크
 ```
 **Description** (854/4000)
 
@@ -336,10 +336,10 @@ Sinais por cima da sua música
 ```
 Bipes e avisos de voz por cima da sua música, sem pausá-la. Monte séries dentro de séries, por tempo ou repetições. O Pro é uma compra única, nunca uma assinatura.
 ```
-**Keywords** (97/100)
+**Keywords** (100/100)
 
 ```
-tabata,treino,academia,emom,amrap,rounds,boxe,corrida,descanso,séries,cronômetro,circuito,fitness
+treino,cronômetro,temporizador,tabata,academia,intervalado,boxe,corrida,emom,esteira,descanso,séries
 ```
 **Description** (1677/4000)
 
@@ -389,10 +389,10 @@ Señales sobre tu música
 ```
 Pitidos y avisos de voz sobre tu música, sin pausarla. Arma series dentro de series, por tiempo o por repeticiones. Pro es una compra única, nunca una suscripción.
 ```
-**Keywords** (100/100)
+**Keywords** (96/100)
 
 ```
-tabata,entrenamiento,gimnasio,emom,amrap,rondas,boxeo,correr,descanso,series,cronómetro,circuito,voz
+temporizador,ejercicio,cronómetro,tabata,boxeo,box,gym,entrenamiento,emom,correr,descanso,series
 ```
 **Description** (1718/4000)
 

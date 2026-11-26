@@ -46,7 +46,7 @@
 - [x] Paywall בעיצוב משלו
 - [x] צבעים ואייקון משלה (כהה וליים, מול ענבר ב-RockSure)
 - [x] צילומי מסך ל-App Store (`store/screenshots-ios/`, 5 לכל שפה, 1206×2622). הסדר: אימון מקונן, רמזים מעל המוזיקה, רכישה אחת בלי מנוי, חזרות, הגדרות. יוצרים מחדש: `$env:IOS="1"; node scripts/store-shots.mjs`
-- [x] שם, Subtitle, Promotional Text, מילות מפתח ותיאור ב-8 שפות: `store/listings-ios.md` (נוצר על ידי `node scripts/ios-listings.mjs`). מילות המפתח הן ניחוש, בלי מחקר
+- [x] שם, Subtitle, Promotional Text, מילות מפתח ותיאור ב-8 שפות: `store/listings-ios.md` (נוצר על ידי `node scripts/ios-listings.mjs`). מילות המפתח לפי הבדיקה החינמית (`store/keywords-ios/README.md`)
 - [x] הערות לבודק: `store/app-review-notes.md`
 - [ ] בקשת דירוג באפליקציה (עוד לא קיימת גם באנדרואיד)
 
