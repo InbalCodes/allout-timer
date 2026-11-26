@@ -18,6 +18,8 @@
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; background: var(--bg); color: var(--text); min-height: 100%; }
+/* No double-tap zoom (iOS zooms the web view on a quick second tap, e.g. on the − / + buttons). Scrolling still works. */
+html { touch-action: manipulation; -webkit-text-size-adjust: 100%; }
 button, label, input { font: inherit; color: inherit; }
 button, label { cursor: pointer; }
 h1 { margin: 0; font-size: 30px; letter-spacing: -0.03em; }

@@ -257,6 +257,11 @@ export function App() {
     setPaywall(t("proSteps", { n: FREE_MAX_STEPS }));
     return false;
   };
+  /** The Pro mark on an add button: shown when this tap would open the paywall instead of adding. */
+  const stepsLeft = FREE_MAX_STEPS - countSteps(items);
+  const stepTag = !pro && stepsLeft < 1 && <span class="tag">{t("pro")}</span>;
+  const groupTag = (parent: string | null) =>
+    !pro && (groupDepth(items, parent) + 1 > FREE_MAX_DEPTH || stepsLeft < 2) && <span class="tag">{t("pro")}</span>;
   const addStep = (parent: string | null) => {
     if (!canAddSteps(1)) return;
     const siblings = parent ? (findNode(items, parent) as Group).items : items;
@@ -341,15 +346,15 @@ export function App() {
           </div>
           {n.items.length ? list(n.items, n.id) : <p class="hint">{t("emptyGroupHint")}</p>}
           <div class="adders">
-            <button type="button" onClick={() => addStep(n.id)}>+ {t("addStep")}</button>
-            <button type="button" onClick={() => addGroup(n.id)}>+ {t("addGroup")}{!pro && <span class="tag">{t("pro")}</span>}</button>
+            <button type="button" onClick={() => addStep(n.id)}>+ {t("addStep")}{stepTag}</button>
+            <button type="button" onClick={() => addGroup(n.id)}>+ {t("addGroup")}{groupTag(n.id)}</button>
           </div>
         </div>
       ))}
       {parent === null && (
         <div class="adders root">
-          <button type="button" onClick={() => addStep(null)}>+ {t("addStep")}</button>
-          <button type="button" onClick={() => addGroup(null)}>+ {t("addGroup")}</button>
+          <button type="button" onClick={() => addStep(null)}>+ {t("addStep")}{stepTag}</button>
+          <button type="button" onClick={() => addGroup(null)}>+ {t("addGroup")}{groupTag(null)}</button>
         </div>
       )}
     </>
