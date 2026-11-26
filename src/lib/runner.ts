@@ -1,4 +1,5 @@
-// Runs a flattened workout. On the phone that's the native service (android/.../IntervalService.java): it owns
+// Runs a flattened workout. On the phone that's native code (android/.../IntervalService.java, and on iOS
+// plugins/interval/ios/.../Workout.swift): it owns
 // the clock, the beeps and the voice, so cues arrive with the screen off and the user's music keeps playing.
 // In a browser a small JS stand-in does the same job well enough to build and check the UI.
 import { Capacitor, registerPlugin } from "@capacitor/core";

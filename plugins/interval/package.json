@@ -1,0 +1,11 @@
+{
+  "name": "allout-interval",
+  "version": "1.0.0",
+  "description": "Allout Timer's workout engine on iOS (clock, beeps, voice, background audio), as a local Capacitor 8 Swift package. Android has its own IntervalService.java in the app.",
+  "private": true,
+  "license": "UNLICENSED",
+  "files": ["ios/Sources", "Package.swift"],
+  "capacitor": {
+    "ios": { "src": "ios" }
+  }
+}

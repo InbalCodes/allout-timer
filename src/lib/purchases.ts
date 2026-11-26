@@ -1,4 +1,4 @@
-// Allout Timer Pro: ONE non-consumable purchase through RevenueCat (Google Play Billing on Android). No subscriptions.
+// Allout Timer Pro: ONE non-consumable purchase through RevenueCat (Google Play Billing on Android, StoreKit on iOS). No subscriptions.
 // Pro = any active entitlement, so a renamed entitlement can't lock paying users out.
 // RevenueCat uses our install id as its app user id (lib/user.ts).
 import { Purchases, LOG_LEVEL, PACKAGE_TYPE, type PurchasesPackage, type CustomerInfo } from "@revenuecat/purchases-capacitor";
@@ -7,7 +7,10 @@ import { getUserId } from "./user";
 
 const isNative = () => Capacitor.isNativePlatform();
 
-const API_KEY = import.meta.env.VITE_REVENUECAT_ANDROID_KEY as string | undefined;
+// One public key per store. The iOS one is set in codemagic.yaml, the Android one in .env.
+const API_KEY = (Capacitor.getPlatform() === "ios"
+  ? import.meta.env.VITE_REVENUECAT_IOS_KEY
+  : import.meta.env.VITE_REVENUECAT_ANDROID_KEY) as string | undefined;
 /** Dev builds can skip the paywall (VITE_DEV_UNLOCK=1 in .env.device only). Never set for store builds. */
 const DEV_UNLOCK = import.meta.env.VITE_DEV_UNLOCK === "1";
 

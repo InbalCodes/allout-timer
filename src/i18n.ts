@@ -1,5 +1,7 @@
 // UI strings in the 8 store languages (en, fr, de, it, ja, ko, pt-BR, es-419). English is the source.
 // Same keys in every language (TypeScript enforces it). Spoken cues come from here too, so the voice follows the UI language.
+import { Capacitor } from "@capacitor/core";
+
 const en = {
   appName: "Allout Timer",
   tagline: "Your intervals, over your music.",
@@ -1007,9 +1009,27 @@ function pickLang(): string {
 export const lang = pickLang();
 document.documentElement.lang = lang;
 
-/** The voice to ask Android's text-to-speech for: the regional variant the store listing targets. */
+/** The voice to ask the phone's text-to-speech for: the regional variant the store listing targets. */
 export const speechLang = ({ pt: "pt-BR", es: "es-US", en: "en-US", fr: "fr-FR", de: "de-DE", it: "it-IT", ja: "ja-JP", ko: "ko-KR" } as Record<string, string>)[lang] ?? "en-US";
 
+/** iPhone build (or `?ios=1` in a browser, to preview its texts). */
+export const ios = Capacitor.getPlatform() === "ios" || new URLSearchParams(location.search).has("ios");
+
+// What reads differently on an iPhone. There is no lock-screen Done button there, so the hint doesn't promise one.
+// Texts that name the Google account are switched to Apple in t().
+const iosTables: Record<string, Partial<Record<Key, string>>> = {
+  en: { manualHint: "The timer waits. Tap Done in the app, and the next step starts." },
+  fr: { manualHint: "Le minuteur attend. Appuyez sur Terminé dans l'app, et l'étape suivante commence." },
+  de: { manualHint: "Der Timer wartet. Tippe in der App auf Fertig, dann startet der nächste Schritt." },
+  it: { manualHint: "Il timer aspetta. Tocca Fatto nell'app e parte la fase successiva." },
+  ja: { manualHint: "タイマーは待機します。アプリで「完了」をタップすると次のステップが始まります。" },
+  ko: { manualHint: "타이머가 기다립니다. 앱에서 완료를 탭하면 다음 단계가 시작됩니다." },
+  pt: { manualHint: "O timer espera. Toque em Concluído no app, e a próxima etapa começa." },
+  es: { manualHint: "El temporizador espera. Toca Listo en la app y empieza el siguiente paso." },
+};
+
 export function t(key: Key, vars: Record<string, string | number> = {}): string {
-  return (tables[lang][key] ?? en[key]).replace(/\{(\w+)\}/g, (_, v) => String(vars[v] ?? ""));
+  let text = tables[lang][key] ?? en[key];
+  if (ios) text = iosTables[lang]?.[key] ?? text.replace("Google", "Apple");
+  return text.replace(/\{(\w+)\}/g, (_, v) => String(vars[v] ?? ""));
 }

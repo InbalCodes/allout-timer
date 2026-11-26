@@ -1,6 +1,7 @@
 <!doctype html>
 <!-- One Play Store screenshot: a headline over the real app screen (an iframe of the dev app in ?demo= mode).
-     Rendered by scripts/store-shots.mjs with headless Edge at 540×960 CSS px × 2 = 1080×1920.
+     Rendered by scripts/store-shots.mjs with headless Edge at 540×960 CSS px × 2 = 1080×1920,
+     or with &ios=1 at 603×1311 × 2 = 1206×2622 (App Store, iPhone 6.9").
      Preview: http://127.0.0.1:5185/scripts/store-shots.html?shot=1&lang=en -->
 <html lang="en"><head><meta charset="utf-8" /><title>store shot</title>
 <style>
@@ -15,6 +16,13 @@
   .screen { width: 100%; height: 100%; border-radius: 35px; overflow: hidden; position: relative; background: #0d0f14; }
   /* the app is laid out at 412×892 (a common phone), then scaled to fit the frame */
   iframe { border: 0; width: 412px; height: 892px; transform: scale(0.78641); /* 324 / 412 */ transform-origin: 0 0; }
+  html.ios, html.ios body { width: 603px; height: 1311px; }
+  html.ios .cap { top: 56px; }
+  html.ios .cap h1 { font-size: 40px; }
+  html.ios .cap p { font-size: 21px; margin-top: 12px; }
+  html.ios .phone { top: 250px; width: 460px; height: 972px; border-radius: 56px; }
+  html.ios .screen { border-radius: 47px; }
+  html.ios iframe { transform: scale(1.06796); /* 440 / 412 */ }
 </style></head>
 <body>
 <div class="bg"></div>
@@ -22,7 +30,7 @@
 <div class="phone"><div class="screen"><iframe id="f"></iframe></div></div>
 <script>
 // App screens, the same in every language: the app picks its language from &lang=.
-const SCREENS = ["?demo=run", "?demo=home", "?demo=reps", "?demo=library", "?demo=settings"];
+const SCREENS = ["?demo=run", "?demo=home", "?demo=reps", "?demo=library", "?demo=settings", "?demo=paywall"];
 // [headline with *accent*, line under it] per language, in the order of SCREENS
 const CAPTIONS = {
   en: [
@@ -31,6 +39,7 @@ const CAPTIONS = {
     ["*Rep steps*, not just time", "Tap Done when you finish, or let the voice count"],
     ["Save *every workout*", "Pro is one purchase. No subscription"],
     ["*Your music*, your call", "Lower it for a moment, or play right on top"],
+    ["*One purchase*, no subscription","Pro: saved workouts, nested sets, unlimited steps"], // App Store only
   ],
   fr: [
     ["Les signaux *par-dessus votre musique*", "Spotify continue. Bips et voix par-dessus"],
@@ -38,6 +47,7 @@ const CAPTIONS = {
     ["Des *répétitions*, pas que du temps", "Appuyez sur Terminé, ou laissez la voix compter"],
     ["Enregistrez *toutes vos séances*", "Pro en un seul achat. Sans abonnement"],
     ["*Votre musique*, votre choix", "La baisser un instant, ou jouer par-dessus"],
+    ["*Un seul achat*, sans abonnement","Pro : séances enregistrées, séries imbriquées"], // App Store only
   ],
   de: [
     ["Signale *über deiner Musik*", "Spotify läuft weiter. Pieptöne und Stimme obendrauf"],
@@ -45,6 +55,7 @@ const CAPTIONS = {
     ["*Wiederholungen*, nicht nur Zeit", "Tippe auf Fertig oder lass die Stimme zählen"],
     ["Speichere *jedes Workout*", "Pro ist ein Einmalkauf. Kein Abo"],
     ["*Deine Musik*, deine Wahl", "Kurz leiser machen oder einfach darüber"],
+    ["*Einmal kaufen*, kein Abo","Pro: gespeicherte Workouts, verschachtelte Sätze"], // App Store only
   ],
   it: [
     ["Segnali *sopra la tua musica*", "Spotify continua. Bip e voce sopra"],
@@ -52,6 +63,7 @@ const CAPTIONS = {
     ["*Ripetizioni*, non solo tempo", "Tocca Fatto, o lascia che la voce conti"],
     ["Salva *ogni allenamento*", "Pro è un solo acquisto. Nessun abbonamento"],
     ["*La tua musica*, decidi tu", "Abbassala per un momento, o suona sopra"],
+    ["*Un solo acquisto*, niente abbonamento","Pro: allenamenti salvati, serie annidate"], // App Store only
   ],
   ja: [
     ["*音楽を止めずに*合図", "Spotifyはそのまま。ビープ音と音声を重ねて"],
@@ -59,6 +71,7 @@ const CAPTIONS = {
     ["時間だけでなく*回数*も", "「完了」をタップ、または音声でカウント"],
     ["ワークアウトを*保存*", "Proは買い切り。サブスクなし"],
     ["*音楽の扱い*を選べる", "一瞬下げるか、そのまま重ねるか"],
+    ["*買い切り*、サブスクなし","Pro：保存し放題、入れ子の繰り返し、ステップ無制限"], // App Store only
   ],
   ko: [
     ["*음악은 그대로*, 신호만 얹기", "Spotify는 계속 재생. 비프음과 음성을 위로"],
@@ -66,6 +79,7 @@ const CAPTIONS = {
     ["시간뿐 아니라 *횟수*도", "완료를 탭하거나, 음성이 세어 줍니다"],
     ["운동을 *저장*하기", "Pro는 한 번만 구매. 구독 없음"],
     ["*내 음악*, 내 선택", "잠깐 줄이거나, 그대로 위에 재생"],
+    ["*한 번 구매*, 구독 없음","Pro: 운동 저장, 반복 안의 반복, 단계 무제한"], // App Store only
   ],
   pt: [
     ["Sinais *por cima da sua música*", "O Spotify continua. Bipes e voz por cima"],
@@ -73,6 +87,7 @@ const CAPTIONS = {
     ["*Repetições*, não só tempo", "Toque em Concluído ou deixe a voz contar"],
     ["Salve *todos os treinos*", "O Pro é uma compra única. Sem assinatura"],
     ["*Sua música*, sua escolha", "Abaixar por um instante, ou tocar por cima"],
+    ["*Uma compra*, sem assinatura","Pro: treinos salvos, séries dentro de séries"], // App Store only
   ],
   es: [
     ["Señales *sobre tu música*", "Spotify sigue sonando. Pitidos y voz encima"],
@@ -80,15 +95,30 @@ const CAPTIONS = {
     ["*Repeticiones*, no solo tiempo", "Toca Listo o deja que la voz cuente"],
     ["Guarda *todos tus entrenamientos*", "Pro es una sola compra. Sin suscripción"],
     ["*Tu música*, tu decisión", "Bajarla un momento, o sonar encima"],
+    ["*Una sola compra*, sin suscripción","Pro: entrenamientos guardados, series anidadas"], // App Store only
   ],
 };
 const q = new URLSearchParams(location.search);
 const lang = q.get("lang") in CAPTIONS ? q.get("lang") : "en";
 document.documentElement.lang = lang;
-const shot = Math.max(1, Math.min(SCREENS.length, +(q.get("shot") || 1)));
-const [h, p] = CAPTIONS[lang][shot - 1];
+const ios = !!q.get("ios");
+// App Store only: lead with what other interval timers do not have (App Review 4.3(a)): nested sets,
+// cues over your own music, one purchase instead of a subscription. No other app's name in the captions.
+const IOS_ORDER = [1, 0, 5, 2, 4];
+const IOS_MUSIC = {
+  en: "Your music keeps playing. Beeps and voice on top", fr: "Votre musique continue. Bips et voix par-dessus",
+  de: "Deine Musik läuft weiter. Pieptöne und Stimme obendrauf", it: "La tua musica continua. Bip e voce sopra",
+  ja: "音楽はそのまま。ビープ音と音声を重ねて", ko: "음악은 계속 재생. 비프음과 음성을 위로",
+  pt: "Sua música continua. Bipes e voz por cima", es: "Tu música sigue sonando. Pitidos y voz encima",
+};
+if (ios) document.documentElement.classList.add("ios");
+const order = ios ? IOS_ORDER : [0, 1, 2, 3, 4];
+const shot = Math.max(1, Math.min(order.length, +(q.get("shot") || 1)));
+const at = order[shot - 1];
+let [h, p] = CAPTIONS[lang][at];
+if (ios && at === 0) p = IOS_MUSIC[lang];
 document.getElementById("h").innerHTML = h.replace(/\*(.+?)\*/g, "<em>$1</em>");
 document.getElementById("p").textContent = p;
-document.getElementById("f").src = "/" + SCREENS[shot - 1] + "&lang=" + lang;
+document.getElementById("f").src = "/" + SCREENS[at] + "&lang=" + lang + (ios ? "&ios=1" : "");
 </script>
 </body></html>

@@ -21,7 +21,7 @@ const TEMPLATE_KEYS: [TemplateId, Key, Key][] = [
 ];
 const RUN_KEY = "run.flat";
 
-/** Dev only: fixed screens for the store screenshots (scripts/store-shots.html). ?demo=home|run|reps|library|settings */
+/** Dev only: fixed screens for the store screenshots (scripts/store-shots.html). ?demo=home|run|reps|library|settings|paywall */
 const DEMO = import.meta.env.DEV ? new URLSearchParams(location.search).get("demo") : null;
 const D = DEMO ? (() => {
   const nested = [step("warmup", 600), group(3, [group(4, [step("work", 60), step("rest", 60)]), step("rest", 180)]), step("cooldown", 300)];
@@ -204,7 +204,7 @@ export function App() {
   const [pro, setPro] = useState(!!D);
   const [editing, setEditing] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
-  const [paywall, setPaywall] = useState<string | null>(null);
+  const [paywall, setPaywall] = useState<string | null>(DEMO === "paywall" ? "" : null);
   const [naming, setNaming] = useState<Naming | null>(null);
   const [menu, setMenu] = useState<string | null>(null);
   const [msg, setMsg] = useState("");

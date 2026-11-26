@@ -1,0 +1,72 @@
+# Codemagic CI: builds the iOS app on a cloud Mac and uploads it to App Store Connect (TestFlight).
+# Uses the same App Store Connect API key as Levain, ClearCut and RockSure (it belongs to the Uniqops team, not to one app).
+# Start a build by hand in Codemagic, or push a tag like ios-v1.0.0. User steps: store/IOS-PLAN.md.
+
+workflows:
+  ios-testflight:
+    name: iOS → TestFlight
+    instance_type: mac_mini_m2
+    max_build_duration: 45
+
+    integrations:
+      # Name of the App Store Connect API key as saved in Codemagic → Integrations
+      app_store_connect: Levain ASC Key
+
+    environment:
+      node: 22
+      xcode: latest
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.uniqops.allout
+      vars:
+        XCODE_PROJECT: ios/App/App.xcodeproj
+        XCODE_SCHEME: App
+        # Numeric "Apple ID" of the app, from App Store Connect → App Information. Placeholder until the app exists there
+        APP_STORE_APPLE_ID: "6839530286"
+        # RevenueCat public iOS SDK key (RevenueCat → Allout Timer → Apps → App Store app → Public API key, starts with appl_).
+        # Public by design (it ships inside the app). Empty = the paywall says purchases are not available.
+        VITE_REVENUECAT_IOS_KEY: "appl_HqHOyCVnWsziKuIIYeMwRmQOIfg"
+
+    triggering:
+      events:
+        - tag
+      tag_patterns:
+        - pattern: "ios-v*"
+
+    scripts:
+      - name: Install npm dependencies
+        script: npm ci
+
+      - name: Build web assets and sync iOS project
+        script: |
+          npm run build
+          npx cap sync ios
+
+      - name: Set up code signing
+        script: xcode-project use-profiles
+
+      - name: Set build number (latest TestFlight build + 1)
+        script: |
+          LATEST=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APPLE_ID" || echo 0)
+          case "$LATEST" in ''|*[!0-9]*) LATEST=0 ;; esac
+          NEXT=$((LATEST + 1))
+          # Codemagic's own counter as a floor, so a failed lookup can't reuse a number Apple already has.
+          if [ "$NEXT" -lt "${BUILD_NUMBER:-0}" ]; then NEXT=$BUILD_NUMBER; fi
+          echo "Build number: $NEXT"
+          sed -i '' "s/CURRENT_PROJECT_VERSION = [0-9]*;/CURRENT_PROJECT_VERSION = $NEXT;/g" "$XCODE_PROJECT/project.pbxproj"
+
+      - name: Build IPA
+        script: |
+          xcode-project build-ipa \
+            --project "$XCODE_PROJECT" \
+            --scheme "$XCODE_SCHEME"
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+
+    publishing:
+      app_store_connect:
+        auth: integration
+        # Internal testers only; external beta review needs TestFlight Test Information first.
+        submit_to_testflight: false

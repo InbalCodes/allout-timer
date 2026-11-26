@@ -9,6 +9,7 @@
     "build": "tsc --noEmit && vite build",
     "check": "tsc --noEmit && node scripts/check-workout.mjs",
     "cap:sync": "npm run build && npx cap sync android",
+    "cap:ios": "npm run build && npx cap sync ios",
     "cap:device": "tsc --noEmit && vite build --mode device && npx cap sync android"
   },
   "dependencies": {
@@ -16,8 +17,10 @@
     "@capacitor/android": "8.5.2",
     "@capacitor/app": "8.1.2",
     "@capacitor/core": "8.5.2",
+    "@capacitor/ios": "8.5.2",
     "@netlify/blobs": "11.1.4",
     "@revenuecat/purchases-capacitor": "13.7.4",
+    "allout-interval": "file:plugins/interval",
     "preact": "10.29.8"
   },
   "devDependencies": {

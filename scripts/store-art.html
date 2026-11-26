@@ -29,8 +29,14 @@ const mark = (size) => { const s = MARK.cloneNode(true); s.setAttribute("width",
 if (art === "icon") {
   // Full bleed: Google Play applies its own rounded mask. The 108-unit canvas puts the mark in its safe zone.
   // Crop the 108-unit adaptive canvas around the mark so it fills ~60% of the store icon.
-  const m = mark(512); m.setAttribute("viewBox", "19 19 70 70");
-  const d = document.createElement("div"); d.className = "icon"; d.append(m); document.body.append(d);
+  // &size=1024 for the App Store icon.
+  const size = +(new URLSearchParams(location.search).get("size") || 512);
+  const m = mark(size); m.setAttribute("viewBox", "19 19 70 70");
+  const d = document.createElement("div"); d.className = "icon"; d.style.width = d.style.height = size + "px"; d.append(m); document.body.append(d);
+} else if (art === "splash") {
+  // iOS launch image, 2732×2732: the icon's lime with the mark in the middle, like the Android splash.
+  const m = mark(760); m.setAttribute("viewBox", "19 19 70 70");
+  const d = document.createElement("div"); d.className = "icon"; d.style.width = d.style.height = "2732px"; d.append(m); document.body.append(d);
 } else {
   const bars = [14, 30, 22, 40, 18, 34, 26, 44, 20, 32, 16, 38, 24, 28].map((h) => `<i style="height:${h}px"></i>`).join("");
   document.body.innerHTML = `<div class="feature">

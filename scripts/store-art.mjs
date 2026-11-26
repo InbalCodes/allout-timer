@@ -1,4 +1,5 @@
-// Renders the Play Store icon (512×512) and feature graphic (1024×500) into store/graphics/ with headless Edge.
+// Renders the Play Store icon (512×512) and feature graphic (1024×500) into store/graphics/ with headless Edge,
+// plus the App Store icon (1024×1024) and the iOS launch image (2732×2732) into ios/App/App/Assets.xcassets/.
 // Needs the dev server: npm run dev (port 5185).   Run: node scripts/store-art.mjs
 import { execFileSync } from "node:child_process";
 import { mkdirSync, existsSync, statSync, rmSync } from "node:fs";
@@ -8,8 +9,11 @@ import { tmpdir } from "node:os";
 const EDGE = "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe";
 const BASE = process.env.BASE ?? "http://127.0.0.1:5185";
 mkdirSync("store/graphics", { recursive: true });
-for (const [art, file, size] of [["icon", "store-icon-512.png", "512,512"], ["feature", "store-feature-1024x500.png", "1024,500"]]) {
-  const out = resolve("store/graphics", file);
+const XC = "ios/App/App/Assets.xcassets";
+for (const [art, file, size] of [["icon", "store/graphics/store-icon-512.png", "512,512"], ["feature", "store/graphics/store-feature-1024x500.png", "1024,500"],
+  ["icon&size=1024", `${XC}/AppIcon.appiconset/AppIcon-512@2x.png`, "1024,1024"],
+  ["splash", `${XC}/Splash.imageset/splash-2732x2732.png`, "2732,2732"], ["splash", `${XC}/Splash.imageset/splash-2732x2732-1.png`, "2732,2732"], ["splash", `${XC}/Splash.imageset/splash-2732x2732-2.png`, "2732,2732"]]) {
+  const out = resolve(file);
   if (existsSync(out)) rmSync(out);
   execFileSync(EDGE, ["--headless=new", `--user-data-dir=${resolve(tmpdir(), "allout-shots")}`, "--disable-gpu", "--hide-scrollbars",
     "--force-device-scale-factor=1", `--window-size=${size}`, "--virtual-time-budget=4000", `--screenshot=${out}`,

@@ -1,5 +1,5 @@
 // Paywall for the one-time Pro purchase. Shown only when a free user reaches for a Pro feature; never on open.
-// The price comes from Google Play through RevenueCat; nothing is hard-coded.
+// The price comes from the store (Google Play or the App Store) through RevenueCat; nothing is hard-coded.
 import { useEffect, useState } from "preact/hooks";
 import { t } from "../i18n";
 import { getProduct, buy, restore, type Product } from "../lib/purchases";
@@ -35,12 +35,21 @@ export function Paywall({ reason, onUnlocked, onClose }: Props) {
     <section class="paywall">
       <button type="button" class="ghost close" onClick={onClose} aria-label={t("notNow")}>✕</button>
       {reason && <p class="reason">{reason}</p>}
-      <h2>{t("paywallTitle")}</h2>
-      <p class="sub">{t("paywallSub")}</p>
+      <p class="eyebrow">{t("paywallTitle")}</p>
+      <h2>{t("paywallSub")}</h2>
+      {/* What Pro adds, drawn with the editor's own blocks: sets of rounds, as many steps as you like. */}
+      <div class="nest" aria-hidden="true">
+        <i class="kind-warmup" />
+        <div class="set"><b>3×</b>
+          <div class="set"><b>4×</b><i class="kind-work" /><i class="kind-rest" /></div>
+          <i class="kind-rest long" />
+        </div>
+        <i class="kind-cooldown" />
+      </div>
       <ul class="benefits">
-        <li>{t("benefit1")}</li>
-        <li>{t("benefit2")}</li>
-        <li>{t("benefit3")}</li>
+        <li><span>▤</span>{t("benefit1")}</li>
+        <li><span>⟳</span>{t("benefit2")}</li>
+        <li><span>∞</span>{t("benefit3")}</li>
       </ul>
 
       {product === null && <p class="msg">{t("notAvailable")}</p>}
