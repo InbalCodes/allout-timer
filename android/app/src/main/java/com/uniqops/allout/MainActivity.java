@@ -11,6 +11,7 @@ public class MainActivity extends BridgeActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         registerPlugin(IntervalPlugin.class);
+        registerPlugin(AppReviewPlugin.class);
         super.onCreate(savedInstanceState);
         // The running-workout notification (with its Done / Stop buttons) needs this on Android 13+.
         if (Build.VERSION.SDK_INT >= 33

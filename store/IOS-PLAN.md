@@ -48,9 +48,14 @@
 - [x] צילומי מסך ל-App Store (`store/screenshots-ios/`, 5 לכל שפה, 1206×2622). הסדר: אימון מקונן, רמזים מעל המוזיקה, רכישה אחת בלי מנוי, חזרות, הגדרות. יוצרים מחדש: `$env:IOS="1"; node scripts/store-shots.mjs`
 - [x] שם, Subtitle, Promotional Text, מילות מפתח ותיאור ב-8 שפות: `store/listings-ios.md` (נוצר על ידי `node scripts/ios-listings.mjs`). מילות המפתח לפי הבדיקה החינמית (`store/keywords-ios/README.md`)
 - [x] הערות לבודק: `store/app-review-notes.md`
-- [ ] בקשת דירוג באפליקציה (עוד לא קיימת גם באנדרואיד)
+- [x] בקשת דירוג באפליקציה, בשתי הפלטפורמות: אחרי אימון שהושלם, מהאימון השלישי, לכל היותר פעם ב-60 יום (`src/lib/review.ts`). עוד לא נבדק במכשיר
 
 ## 6. הגשה
 - **לא מגישים** עד ש-Apple מחליטה על RockSure
 - מגישים אפליקציה אחת בכל פעם: קודם Allout, ו-Dripless אחרונה
 - סיכון ידוע: Apple בודקת שימוש ב-background audio. ההסבר: אלה רמזי אימון קוליים שהמשתמש ביקש, בזמן אימון פעיל בלבד, והאודיו נעצר כשהאימון נגמר
+
+## App Store Connect (26.11.2026)
+הועלו ל-App Store Connect, בלי הגשה: שם, Subtitle, Promotional Text, מילות מפתח ותיאור ב-8 שפות, 5 צילומי מסך לכל שפה, Support URL ו-Copyright. הסטטוס נשאר Prepare for Submission.
+הועלו גם הערות לבודק (Sign-in required כבוי) ו-Privacy Policy URL באנגלית.
+עוד חסר לפני הגשה: בחירת Build, פרטי קשר לבודק, שאלון App Privacy, Age Rating, קטגוריה, צילום מסך לרכישה.

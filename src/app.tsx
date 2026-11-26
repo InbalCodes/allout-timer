@@ -12,6 +12,7 @@ import * as runner from "./lib/runner";
 import { loadCurrent, saveCurrent, loadLibrary, saveLibrary, libAdd, libUpdate, libRemove, libDuplicate, loadSettings, saveSettings, type Settings, type Current, type Saved } from "./lib/store";
 import { isPro, onProChange, restore } from "./lib/purchases";
 import { Paywall, LEGAL } from "./components/Paywall";
+import { afterWorkoutCompleted } from "./lib/review";
 
 type Screen = "home" | "library" | "run" | "done" | "settings";
 const KINDS: Kind[] = ["work", "rest", "warmup", "cooldown"];
@@ -431,7 +432,7 @@ export function App() {
       )}
 
       {screen === "run" && flat.length > 0 && (
-        <Run flat={flat} settings={settings} demo={D?.status} onEnd={(s) => { setSummary(s); setScreen("done"); }} />
+        <Run flat={flat} settings={settings} demo={D?.status} onEnd={(s) => { setSummary(s); setScreen("done"); if (s?.completed && !D) afterWorkoutCompleted(); }} />
       )}
 
       {screen === "done" && (
