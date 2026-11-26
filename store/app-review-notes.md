@@ -14,7 +14,7 @@ Allout Timer is an interval timer for people who train with their own music: run
 - Workouts are built from blocks, and repeats can be placed inside repeats (for example 3 sets of 4 × (1 min hard + 1 min easy) with a longer rest between sets). The editor shows this nesting directly.
 - Steps can be by time or by reps. A rep step waits for the user to tap Done, or the voice counts the reps at a pace the user sets.
 - No subscription. The free version is fully usable with no ads; Pro is a single non-consumable purchase.
-- No account, no ads, no analytics. Workouts are stored only on the device.
+- No account, no ads, no analytics or tracking. Workouts are stored only on the device.
 The app was designed and written by us from scratch. The workout engine is native Swift (AVAudioEngine and AVSpeechSynthesizer).
 
 3. HOW TO USE / TEST
@@ -32,6 +32,7 @@ The app's core function is audible workout cues while the iPhone is locked or in
 5. EXTERNAL SERVICES
 - Apple In-App Purchase (StoreKit) for the one-time purchase.
 - RevenueCat, to check whether Pro was bought and to restore it. It receives only a random app user ID and the purchase history; no name or email.
+- Firebase Crashlytics (Google), for crash reports only. A report holds the device model, iOS version, app version, the stack trace and the same random app user ID; no name, email or content. It is not used for analytics or tracking.
 No analytics, advertising, login or social services are used. The app does not use the microphone, camera, location, Health or contacts.
 
 6. REGIONS

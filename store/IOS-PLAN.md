@@ -59,3 +59,7 @@
 הועלו ל-App Store Connect, בלי הגשה: שם, Subtitle, Promotional Text, מילות מפתח ותיאור ב-8 שפות, 5 צילומי מסך לכל שפה, Support URL ו-Copyright. הסטטוס נשאר Prepare for Submission.
 הועלו גם הערות לבודק (Sign-in required כבוי) ו-Privacy Policy URL באנגלית.
 עוד חסר לפני הגשה: בחירת Build, פרטי קשר לבודק, שאלון App Privacy, Age Rating, קטגוריה, צילום מסך לרכישה.
+
+## Crashlytics ל-iOS (26.11.2026)
+הופעל בקוד: `GoogleService-Info.plist`, התוסף ב-iOS, ושלב העלאת dSYM ב-`codemagic.yaml`. עוד לא נבנה ולא נבדק.
+לפני הגשה: קריסת בדיקה ב-TestFlight שמגיעה ל-Firebase; בשאלון App Privacy לסמן Crash Data, Other Diagnostic Data, Purchase History ו-User ID (לא מקושר, App Functionality, בלי Tracking); ולהדביק מחדש את הערות הבודק המעודכנות (ב-App Store Connect שמורה הגרסה הישנה, כי השמירה דורשת עכשיו פרטי קשר).
